@@ -1,0 +1,88 @@
+### Endpoints
+
+1. Authentication
++ Allow users to log in and log out using JWT authentication. 
+
+2. Products Endpoint
++ Retrieve all products
++ Retrieve a specific product by ID
++ Add a new product
++ Update an existing product
++ Delete a product
++ Search products by brand, model, or price range.
+
+3. Reviews Endpoint
++ Retrieve all reviews
++ Retrieve a specific review by ID
++ Add a new review
++ Update an existing review
++ Delete a review
++ Allow filtering by product ID or user ID.
++ Allow sorting by the review's rating or timestamp.
+
+4. Users Endpoint
++ Retrieve all users
++ Retrieve a specific user by ID 
++ Add a new user
++ Update an existing user
++ Delete a user
++ Allow searching by username or email.
+
+5. Orders Endpoint
++ Retrieve all orders
++ Retrieve a specific order by ID
++ Add a new order
++ Update an existing order
++ Delete an order
++ Allow filtering by user ID or order status. 
++ Allow sorting by the order's total price or timestamp.
+
+### Requirements
+
++ The product should have a unique ID, brand, model, price, discount, and availability.
++ Each review should have a unique ID, the user who made the review, the product it's reviewing, a rating between 1-5, and a description.
++ Users should have a unique username, email, password, and can have an optional profile picture.
+- Orders should have a unique ID, the user who made the order, the products ordered, and a total price.
+- When an order is placed, the availability of each product should be updated accordingly.
++ Only authenticated users can add reviews and create orders.
++ Regular users should be able to add reviews, update or delete their own reviews, and only create, update, or delete their own orders.
+
+### Technical Requirements
+1. The project should be built using Django 3.1 and Django REST Framework.
+2. Use PostgreSQL as the database.
+3. Use token authentication for regular users and JSON web token authentication for admin users.
+4. Create unit tests using tools like PyTest or Django's built-in test suite.
+5. Implement rate limiting for API calls.
+
+### Bonus Points
+1. Create a frontend using a JavaScript framework like React or Angular that consumes the API.
+2. Implement image uploads for products and user profile pictures.
+3. Use GraphQL as an alternative to REST.
+4. Implement a cache layer for frequently accessed information.
+
+### Deliverables
+1. A Git repository with the Django project containing the API.
+2. A readme file with instructions on how to set up and run the API.
+3. A documentation file that explains the endpoints, their parameters, and their accepted responses.
+4. Unit tests to ensure each endpoint is working as expected. 
+
+### Authentication
++ `POST /api/token/`: Endpoint to obtain an access token by sending a POST request with `username` and `password` in the request body. The response contains a JSON object containing `access` and `refresh` token.
++ `POST /api/token/refresh/`: Endpoint to obtain a new access token by sending a POST request with `refresh` token in the request body. The response contains a JSON object containing a new `access` token.
+
+### Products Endpoint
+    
++ `GET /api/products/`: Endpoint to retrieve a list of all products
++ `GET /api/products/<int:pk>/`: Endpoint to retrieve a specific product by its ID.
++ `POST /api/products/`: Endpoint to add a new product.
++ `PUT /api/products/<int:pk>/`: Endpoint to update an existing product by its ID.
++ `DELETE /api/products/<int:pk>/`: Endpoint to delete a product by its ID.
++ `GET /api/products/search/?query=<text>`: Endpoint to search for products by brand, model, category, or price range. The `query` parameter in the URL contains the text to search for.
+
+### Reviews Endpoint
+
++ `GET /api/reviews/`: Endpoint to retrieve a list of all reviews
++ `GET /api/reviews/<int:pk>/`: Endpoint to retrieve a specific review by its ID.
++ `POST /api/reviews/`: Endpoint to add a new review.
++ `PUT /api/reviews/<int:pk>/`: Endpoint to update an existing review by its ID.
++ `DELETE /api/reviews/<int:pk>/`: Endpoint to delete a review by
