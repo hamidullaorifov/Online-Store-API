@@ -19,7 +19,7 @@ schema_view = get_schema_view(
       default_version='v1',
       description=f"This is Online Store API that sells products.\nSome endpoints can be used only by staff users. \nTo test this endpoints use this data and get access token: {credentials}",
       terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
+      contact=openapi.Contact(email="orifovhamidulla@gmail.com"),
       license=openapi.License(name="BSD License"),
    ),
    public=True,
